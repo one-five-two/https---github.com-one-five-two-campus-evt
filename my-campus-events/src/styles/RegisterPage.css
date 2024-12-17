@@ -1,0 +1,143 @@
+/* Add these animations to your existing CSS */
+
+/* Form entrance animation */
+@keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Input focus animation */
+  @keyframes inputFocus {
+    0% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(76, 175, 80, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
+  }
+  
+  /* Success checkmark animation */
+  @keyframes checkmark {
+    0% {
+      transform: scale(0);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  /* Apply the animations */
+  .register-container {
+    animation: slideIn 0.5s ease-out;
+  }
+  
+  .form-group {
+    position: relative;
+    transition: transform 0.3s;
+  }
+  
+  .form-group:focus-within {
+    transform: translateX(5px);
+  }
+  
+  .form-group input:focus {
+    animation: inputFocus 1s;
+  }
+  
+  .validation-message.valid::before {
+    content: '✓';
+    display: inline-block;
+    margin-right: 5px;
+    color: #4CAF50;
+    animation: checkmark 0.3s ease-in-out;
+  }
+  
+  .validation-message.invalid::before {
+    content: '✗';
+    display: inline-block;
+    margin-right: 5px;
+    color: #f44336;
+  }
+  
+  /* Hover effects */
+  .form-group label {
+    transition: color 0.3s;
+  }
+  
+  .form-group:hover label {
+    color: #4CAF50;
+  }
+  
+  button[type="submit"] {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  button[type="submit"]::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+  }
+  
+  button[type="submit"]:hover::after {
+    animation: ripple 1s ease-out;
+  }
+  
+  @keyframes ripple {
+    0% {
+      transform: scale(0, 0);
+      opacity: 0.5;
+    }
+    100% {
+      transform: scale(40, 40);
+      opacity: 0;
+    }
+  }
+  
+  /* Loading spinner animation */
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  button[type="submit"]:disabled::before {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 10px;
+    border: 2px solid #fff;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  /* Error message shake animation */
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+  }
+  
+  .error-message {
+    animation: shake 0.6s ease-in-out;
+  }
+  
+  /* Password strength transition */
+  .password-strength-meter div {
+    transition: width 0.5s ease, background-color 0.5s ease;
+  }

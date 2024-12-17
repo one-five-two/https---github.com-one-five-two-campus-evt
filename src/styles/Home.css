@@ -1,0 +1,19 @@
+.cta-button.primary {
+  background-color: #722F37;
+  color: white;
+}
+
+.cta-button.primary:hover {
+  background-color: #5A252C;
+}
+
+.cta-button.secondary {
+  background-color: white;
+  color: #722F37;
+  border: 2px solid #722F37;
+}
+
+.cta-button.secondary:hover {
+  background-color: #722F37;
+  color: white;
+} 
